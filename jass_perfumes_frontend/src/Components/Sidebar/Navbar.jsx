@@ -86,7 +86,7 @@ const Navbar = ({
     const route = location.pathname;
     switch (route) {
       case '/customer':
-        return 'Customer Dashboard';
+        return 'Customer Management';
       case '/items':
         return 'Products Management';
       case '/inventory':
