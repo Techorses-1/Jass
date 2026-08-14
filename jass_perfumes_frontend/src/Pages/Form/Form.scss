@@ -1,0 +1,139 @@
+
+
+.form-container.premium {
+  max-width: 100%;
+  padding: 25px;
+  background: linear-gradient(145deg, #f9f9ff, #e1e1ef);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+input,
+textarea,
+.select-field {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+  width: 100%;
+  background-color: white;
+}
+
+.select-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
+}
+
+input:focus,
+textarea:focus,
+.select-field:focus {
+  border-color: #7366ff;
+  outline: none;
+  background-color: #f7f9ff;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+button[type="submit"] {
+  padding: 12px;
+  background: linear-gradient(to right, #7366ff, #948cff);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(to right, #5f53cc, #7366ff);
+}
+
+.email-fields-group,
+.contact-fields-group {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-container.premium {
+    padding: 10px 20px !important;
+  }
+
+  /* For email/contact rows - hide the original layout on mobile */
+  .email-contact-row {
+    display: none;
+  }
+
+  /* Show the grouped fields only on mobile */
+  .email-fields-group,
+  .contact-fields-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* Regular rows (non email/contact) just stack normally */
+  .form-row:not(.email-contact-row) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  label {
+    font-size: 13px;
+  }
+
+  input,
+  textarea,
+  .select-field {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

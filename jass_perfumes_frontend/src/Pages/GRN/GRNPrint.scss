@@ -1,0 +1,159 @@
+.grn-print {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.top-header {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.header-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 15px;
+}
+
+.vendor-details,
+.meta-info {
+  width: 48%;
+}
+
+.vendor-details h4 {
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.vendor-details p,
+.meta-info p {
+  margin: 3px 0;
+  font-size: 13px;
+}
+
+.meta-info strong,
+.vendor-details strong {
+  min-width: 120px;
+  display: inline-block;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th,
+  td {
+    border: 1px solid #000;
+    padding: 6px 8px;
+    text-align: left;
+    font-size: 13px;
+    word-break: break-word; // allow long words to wrap
+    vertical-align: top;
+  }
+
+  th:nth-child(3),
+  // "DESCRIPTION" column
+  td:nth-child(3) {
+    width: 200px; // or 180px, tune as needed
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  th {
+    background-color: #eee;
+    font-weight: bold;
+  }
+}
+
+.grn-comments {
+  margin-top: 15px;
+
+  p {
+    margin: 5px 0 0 0;
+  }
+}
+
+.totals {
+  margin-top: 20px;
+
+  p {
+    margin: 2px 0;
+    font-weight: bold;
+
+    strong {
+      min-width: 140px;
+      display: inline-block;
+    }
+  }
+}
+
+.grn-footer {
+  margin-top: 40px;
+
+  p {
+    margin: 0 0 10px 0;
+  }
+
+  .sign-box {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+}
+
+
+.bottom-section {
+  margin-top: 30px;
+}
+
+.totals-box {
+  width: 300px;
+  margin-left: auto;
+  border: 1px solid #000;
+  padding: 10px 15px;
+
+  p {
+    margin: 5px 0;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+
+    strong {
+      font-weight: bold;
+    }
+  }
+}
+
+.footer-box {
+  margin-top: 25px;
+
+  .left {
+    text-align: left;
+    margin: 3px 0;
+  }
+
+  .right {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 30px;
+  }
+
+  .note {
+    font-style: italic;
+    font-size: 13px;
+    margin-top: 30px;
+  }
+}

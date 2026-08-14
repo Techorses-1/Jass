@@ -1,0 +1,38 @@
+================================================================================
+📅 FULL INVENTORY RESET REPORT
+📅 Date & Time: 30/5/2026, 11:48:04 am
+🎯 Target: ALL products (every inventory document)
+================================================================================
+
+📊 BEFORE RESET STATISTICS:
+----------------------------------------
+📌 Total Products in Inventory: 337
+📌 Products WITH batches/quantity: 326
+📌 Products WITHOUT any stock: 11
+📌 Total batches across all products: 359
+📌 Total quantity across all products: 7740
+📌 Products with price history: 333
+📌 Total price history entries: 433
+
+📊 AFTER RESET STATISTICS:
+----------------------------------------
+📌 Total Products in Inventory: 337
+📌 Products WITH batches/quantity: 0
+📌 Products WITHOUT any stock: 337
+📌 Total batches across all products: 0 (was 359)
+📌 Total quantity across all products: 0 (was 7740)
+📌 Products with price history: 0 (was 333)
+📌 Total price history entries: 0 (was 433)
+
+✅ RESET SUMMARY:
+----------------------------------------
+✓ 337 products matched
+✓ 337 products modified
+✓ 359 batches removed
+✓ 7740 units set to 0
+✓ 433 price history entries cleared
+
+================================================================================
+✅ RESET COMPLETED - 30/5/2026, 11:48:04 am
+📁 Log file: full_inventory_reset_2026-05-30T06-18-04-558Z.log
+================================================================================

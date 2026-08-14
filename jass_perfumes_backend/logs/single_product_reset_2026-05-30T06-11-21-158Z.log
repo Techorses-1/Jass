@@ -1,0 +1,34 @@
+================================================================================
+📅 SINGLE PRODUCT RESET TEST
+📅 Date & Time: 30/5/2026, 11:41:21 am
+🎯 Target: Single product only (by Product ID)
+================================================================================
+
+📋 BEFORE RESET:
+----------------------------------------
+Product Name: TESTING PRODUCT
+Product ID: b9caee96-1a00-4094-9cea-8a46e34bc3ae
+Category: deodorant
+Total Quantity: 10
+Number of Batches: 1
+Price History Entries: 1
+
+📦 Current Batches:
+   1. Batch: BATCH1 | Qty: 10
+
+🔄 PERFORMING RESET...
+
+✅ AFTER RESET:
+----------------------------------------
+Product Name: TESTING PRODUCT
+Product ID: b9caee96-1a00-4094-9cea-8a46e34bc3ae
+Total Quantity: 0 (was 10)
+Number of Batches: 0 (was 1)
+Price History Entries: 0 (was 1)
+
+✅ Product successfully reset!
+
+================================================================================
+✅ RESET COMPLETED - 30/5/2026, 11:41:21 am
+📁 Log file: single_product_reset_2026-05-30T06-11-21-158Z.log
+================================================================================

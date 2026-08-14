@@ -1,0 +1,1239 @@
+.inventory-page {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px auto;
+    max-width: 1300px;
+    padding: 0 20px 8px 20px;
+
+    .inventory-header-right {
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+    }
+
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+
+    }
+
+    .filter-container {
+      margin-top: 10px;
+      border-radius: 50px !important;
+
+      .filter-with-icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-radius: 50px;
+
+        .filter-icon {
+          position: absolute;
+          left: 10px;
+          color: #888;
+          z-index: 1;
+        }
+
+        .stock-filter {
+          border-radius: 50px !important;
+          padding: 8px 20px 8px 35px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          font-size: 14px;
+          outline: none;
+          background-color: white;
+          appearance: none;
+          cursor: pointer;
+
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 10px center;
+          background-size: 16px;
+
+          &:focus {
+            border-color: #7366ff;
+          }
+        }
+      }
+    }
+
+    .search-container {
+      position: relative;
+      width: 220px;
+
+      input {
+        width: 100%;
+        padding: 8px 12px 8px 35px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+
+        &:focus {
+          border-color: #7366ff;
+        }
+      }
+
+      .search-icon {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: #888;
+      }
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #3f3f91;
+    }
+
+    // .action-buttons-group {
+    //   .export-all-btn {
+    //     display: flex;
+    //     align-items: center;
+    //     gap: 8px;
+    //     background: linear-gradient(to right, #4caf50, #66bb6a);
+    //     color: white;
+    //     padding: 10px 16px;
+    //     font-size: 14px;
+    //     font-weight: 500;
+    //     border: none;
+    //     border-radius: 6px;
+    //     cursor: pointer;
+    //     transition: 0.3s;
+
+    //     &:hover {
+    //       background: linear-gradient(to right, #388e3c, #4caf50);
+    //     }
+    //   }
+    // }
+  }
+
+  .data-table {
+    max-width: 1300px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #3f3f91;
+      font-weight: 500;
+    }
+
+    .no-data {
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      font-style: italic;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        text-align: left;
+      }
+
+      th {
+        background: #f5f6fa;
+        font-weight: 600;
+        color: #3f3f91;
+      }
+    }
+  }
+
+  .clickable-row {
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #f5f6fa;
+    }
+
+    &.expanded {
+      background-color: #e3f2fd;
+    }
+
+    .expand-icon {
+      width: 40px;
+      text-align: center;
+      color: #7366ff;
+    }
+  }
+
+  .batch-details-row {
+    background-color: #f9f9f9;
+
+    td {
+      padding: 0 !important;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .batch-container {
+      padding: 20px;
+      background-color: white;
+      margin: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+
+      h4 {
+        margin: 0 0 15px 0;
+        font-size: 16px;
+        color: #3f3f91;
+        font-weight: 600;
+      }
+
+      .no-batches {
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        background-color: #fafafa;
+        border-radius: 4px;
+      }
+
+      .batch-table-container {
+        overflow-x: auto;
+
+        .batch-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 10px;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+          thead {
+            background-color: #f0f4ff;
+
+            th {
+              padding: 10px 12px;
+              font-weight: 600;
+              color: #3f3f91;
+              text-align: left;
+              border-bottom: 2px solid #ddd;
+              font-size: 13px;
+            }
+          }
+
+          tbody {
+            tr {
+              &:nth-child(even) {
+                background-color: #f9f9f9;
+              }
+
+              &:hover {
+                background-color: #f1f1f1;
+              }
+
+              td {
+                padding: 10px 12px !important;
+                border-bottom: 1px solid #eee;
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Status styles
+  .low-stock {
+    color: #d32f2f;
+    font-weight: 500;
+  }
+
+  .in-stock {
+    color: #388e3c;
+  }
+
+  .out-of-stock {
+    color: #f44336;
+    font-weight: 500;
+  }
+
+  // Table loader
+  .table-loader {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 4px solid rgba(115, 102, 255, 0.2);
+    border-top-color: #7366ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  .load-more-container {
+    text-align: center;
+    margin-top: 20px;
+
+    .load-more-btn {
+      background: linear-gradient(to right, #7366ff, #948cff);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+
+      &:hover {
+        background: linear-gradient(to right, #5f53cc, #7366ff);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .data-table table {
+      font-size: 13px;
+    }
+  }
+}
+
+
+
+// Add these styles to your Inventory.scss
+
+.action-buttons-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .add-qty-btn,
+  .bulk-upload-btn,
+  .export-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .add-qty-btn {
+    background: linear-gradient(135deg, #e67e22, #f39c12);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(135deg, #e67e22, #f39c12);
+    }
+  }
+
+
+  .bulk-upload-btn {
+    background: linear-gradient(to right, #FF9800, #FFB74D);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(to right, #F57C00, #FF9800);
+    }
+  }
+
+  .export-all-btn {
+    background: linear-gradient(to right, #4caf50, #66bb6a);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(to right, #388e3c, #4caf50);
+    }
+  }
+
+  .stock-value-btn {
+    background: linear-gradient(to right, #4caf50, #66bb6a);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(to right, #388e3c, #4caf50);
+    }
+  }
+
+  .export-with-batches-btn {
+    background: linear-gradient(to right, #2196f3, #42a5f5);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(to right, #1976d2, #2196f3);
+    }
+  }
+}
+
+// Modal Styles
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 10px;
+  padding: 0;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+
+    h3 {
+      margin: 0;
+      color: #3f3f91;
+      font-size: 18px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+
+  form {
+    padding: 20px;
+
+    .form-group {
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+
+        &:focus {
+          border-color: #7366ff;
+          outline: none;
+        }
+      }
+
+      small {
+        color: #666;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+// Searchable Dropdown
+.searchable-dropdown {
+  position: relative;
+
+  .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    max-height: 300px; // Increased height
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    .dropdown-option {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+
+      &:hover {
+        background: #f5f6fa;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.no-results {
+        color: #666;
+        font-style: italic;
+        cursor: default;
+
+        &:hover {
+          background: white;
+        }
+      }
+    }
+  }
+}
+
+
+.product-info {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+
+  p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+}
+
+// Batches Section
+.batches-section {
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .add-batch-btn {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+
+      &:hover {
+        background: #388e3c;
+      }
+    }
+  }
+
+  .batch-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 10px;
+    align-items: end;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    margin-bottom: 10px;
+
+    .remove-batch-btn {
+      background: #f44336;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background: #d32f2f;
+      }
+    }
+  }
+}
+
+// Modal Actions
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+
+  .cancel-btn {
+    background: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      background: #e0e0e0;
+    }
+  }
+
+  .submit-btn {
+    background: #7366ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      background: #5f53cc;
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.download-template {
+  margin: 15px 0;
+  text-align: center;
+
+  a {
+    color: #7366ff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .action-buttons-group {
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .batch-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 10px;
+  }
+}
+
+
+// Add these styles to your existing Inventory.scss
+
+.download-template {
+  margin: 15px 0;
+  text-align: center;
+
+  .template-download-btn {
+    background: #7366ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      background: #5f53cc;
+      text-decoration: none;
+    }
+  }
+}
+
+
+// Error Report Modal Styles
+.error-report-modal {
+  max-width: 900px;
+  max-height: 80vh;
+
+  .error-report-content {
+    padding: 0;
+  }
+
+  .error-summary {
+    padding: 15px 20px;
+    background-color: #fff3f3;
+    border-bottom: 1px solid #ffcdd2;
+
+    p {
+      margin: 0;
+      color: #d32f2f;
+      font-size: 14px;
+    }
+  }
+
+  .errors-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0 20px;
+  }
+
+  .errors-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+
+    th {
+      background-color: #f5f6fa;
+      padding: 12px 8px;
+      text-align: left;
+      font-weight: 600;
+      color: #3f3f91;
+      border-bottom: 2px solid #e0e0e0;
+      font-size: 13px;
+      position: sticky;
+      top: 0;
+    }
+
+    td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 13px;
+    }
+
+    .error-row {
+      &:hover {
+        background-color: #fff9f9;
+      }
+
+      .error-row-number {
+        color: #666;
+        font-weight: 500;
+      }
+
+      .error-product {
+        font-weight: 500;
+      }
+
+      .error-batch {
+        font-family: monospace;
+      }
+
+      .error-reason {
+        color: #d32f2f;
+
+        .error-message {
+          display: block;
+          font-weight: 500;
+        }
+
+        .error-details {
+          display: block;
+          color: #666;
+          font-size: 11px;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+
+  .error-actions {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+
+    .download-error-btn {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+
+      &:hover {
+        background-color: #f57c00;
+      }
+    }
+
+    .close-error-btn {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+
+      &:hover {
+        background-color: #545b62;
+      }
+    }
+  }
+}
+
+// Scrollbar styling for error table
+.errors-table-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.errors-table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.errors-table-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.errors-table-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+
+
+
+// Batch Disposal Styles
+.batch-main-row {
+  td {
+    vertical-align: middle;
+  }
+}
+
+.quantity-badge {
+  background: #e8f5e8;
+  color: #388e3c;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &.zero {
+    background: #ffebee;
+    color: #d32f2f;
+  }
+}
+
+.disposed-badge {
+  background: #fff3e0;
+  color: #f57c00;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.no-disposal {
+  color: #999;
+  font-style: italic;
+}
+
+.expired-date {
+  color: #f57c00;
+  font-weight: 600;
+}
+
+.view-disposal-btn {
+  background: #7366ff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: #5f53cc;
+  }
+}
+
+.no-disposal-history {
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+}
+
+// Disposal Details Styles
+.disposal-details-row {
+  background-color: #f9f9f9;
+
+  td {
+    padding: 0 !important;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.disposal-details-container {
+  padding: 20px;
+  background: white;
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+
+  h5 {
+    margin: 0 0 15px 0;
+    color: #3f3f91;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.disposal-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+
+  th,
+  td {
+    padding: 10px 12px;
+    border: 1px solid #eee;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  th {
+    background: #f0f4ff;
+    font-weight: 600;
+    color: #3f3f91;
+  }
+
+  .disposal-row {
+    &.defective {
+      background: #fff5f5;
+    }
+
+    &.expired {
+      background: #fffaf0;
+    }
+  }
+
+  .disposal-type-badge {
+    padding: 3px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &.defective {
+      background: #ffebee;
+      color: #d32f2f;
+    }
+
+    &.expired {
+      background: #fff3e0;
+      color: #f57c00;
+    }
+  }
+
+  .quantity-removed {
+    color: #d32f2f;
+    font-weight: 600;
+    font-size: 11px;
+  }
+
+  .disposal-reason {
+    max-width: 200px;
+    word-wrap: break-word;
+  }
+
+  .disposal-id {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #666;
+  }
+}
+
+.disposal-summary {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+
+  .summary-item {
+    font-size: 13px;
+
+    strong {
+      color: #333;
+    }
+  }
+}
+
+// Batch number cell styling
+.batch-number-cell {
+  font-weight: 600;
+  color: #333;
+}
+
+.disposal-info-cell {
+  text-align: center;
+}
+
+
+// Export Buttons Row Styles
+.export-buttons-row {
+  max-width: 1300px;
+  margin: 0 auto 20px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.export-buttons-container {
+  display: flex;
+  gap: 12px;
+
+
+  .export-btn,
+  .export-with-batches-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 50px !important;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .export-btn {
+
+    background: linear-gradient(to right, #4caf50, #66bb6a);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(to right, #388e3c, #4caf50);
+    }
+  }
+
+  .export-with-batches-btn {
+    background: linear-gradient(to right, #2196f3, #42a5f5);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(to right, #1976d2, #2196f3);
+    }
+  }
+}
+
+// Responsive design for export buttons
+@media (max-width: 768px) {
+  .export-buttons-row {
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .export-buttons-container {
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+
+
+// Add these styles to your Inventory.scss
+
+.disabled-btn {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+  background-color: #f5f5f5 !important;
+  color: #999 !important;
+  border-color: #ddd !important;
+
+  &:hover {
+    background-color: #f5f5f5 !important;
+    color: #999 !important;
+    border-color: #ddd !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// If you want to add a tooltip effect
+.action-buttons-group {
+  position: relative;
+
+  .disabled-btn {
+    position: relative;
+
+
+  }
+}
+
+
+
+
+// Batch History Styles
+.clickable-batch-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f5f6fa !important;
+  }
+}
+
+.batch-number-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.batch-expand-icon {
+  color: #7366ff;
+  font-size: 12px;
+}
+
+.batch-history-row {
+  background-color: #f9f9f9;
+
+  td {
+    padding: 0 !important;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.batch-history-container {
+  padding: 20px;
+  background: white;
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+
+  h5 {
+    margin: 0 0 15px 0;
+    color: #3f3f91;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.addition-history-table {
+  overflow-x: auto;
+}
+
+.addition-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+
+  th,
+  td {
+    padding: 10px 12px;
+    border: 1px solid #eee;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  th {
+    background: #f0f4ff;
+    font-weight: 600;
+    color: #3f3f91;
+  }
+
+  .addition-row {
+    &:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  .quantity-added {
+    color: #388e3c;
+    font-weight: 600;
+    font-size: 11px;
+  }
+
+  .addition-price {
+    color: #1976d2;
+    font-weight: 500;
+  }
+
+  .addition-total-value {
+    color: #d32f2f;
+    font-weight: 600;
+  }
+
+  .addition-batches {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: #666;
+  }
+
+  .addition-summary {
+    background: #e8f5e8;
+    font-weight: 600;
+
+    td {
+      border-top: 2px solid #388e3c;
+    }
+  }
+}
+
+.total-added-quantity {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.no-addition-history {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  background-color: #fafafa;
+  border-radius: 4px;
+}
+
+// Ensure proper row highlighting
+.batch-main-row.expanded {
+  background-color: #e3f2fd !important;
+}

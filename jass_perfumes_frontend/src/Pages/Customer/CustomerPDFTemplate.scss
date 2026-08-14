@@ -1,0 +1,157 @@
+.pdf-container {
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  min-height: 100vh;
+}
+
+// Background watermark with low opacity
+.pdf-watermark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../Assets/logo/bg_logo.jpg');
+  background-size: 400px; // Adjust size as needed
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1; // Low opacity for watermark effect
+  z-index: -1; // Place behind all content
+  pointer-events: none; // Allow clicks to pass through
+}
+
+.pdf-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15rem;
+    width: 100%;
+    
+    .logo {
+      height: 60px;
+      margin-right: 20px;
+    }
+    
+    .company-info {
+      h2 {
+        margin: 0;
+        color: #3f3f91;
+        font-size: 18px;
+      }
+      
+      p {
+        margin: 2px 0;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.pdf-content {
+  padding: 90px 30px 70px; // Account for header and footer
+  position: relative;
+  z-index: 1; // Ensure content appears above watermark
+  
+  .pdf-title {
+    color: #3f3f91;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .customer-details {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95); // Slightly transparent white background
+    
+    h2 {
+      color: #3f3f91;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    
+    hr {
+      border: none;
+      border-top: 1px solid #eee;
+      margin-bottom: 15px;
+    }
+    
+    .detail-item {
+      margin: 10px 0;
+      font-size: 14px;
+      page-break-inside: avoid;
+    }
+  }
+}
+
+.pdf-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; // Ensure footer appears above watermark
+  
+  .footer-content {
+    text-align: center;
+    
+    p {
+      margin: 3px 0;
+      font-size: 10px;
+      color: #666;
+    }
+  }
+}
+
+// Media query for print
+@media print {
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .pdf-header, .pdf-footer {
+    visibility: visible;
+  }
+  
+  .pdf-content {
+    padding-top: 90px;
+    padding-bottom: 70px;
+  }
+  
+  // Ensure watermark prints correctly
+  .pdf-watermark {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  // Page numbering
+  @page {
+    margin: 100px 0 60px;
+    
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 10px;
+      color: #666;
+    }
+  }
+}

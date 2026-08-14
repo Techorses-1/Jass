@@ -1,0 +1,372 @@
+// Variables for consistent styling
+$primary-font: Arial, sans-serif;
+$primary-color: #333;
+$border-color: #ddd;
+$table-header-bg: #f5f5f5;
+
+// Mixins for reusable styles
+@mixin avoid-page-break {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+#workorder-pdf {
+  width: 100%;
+  max-width: 210mm;
+  padding: 10mm;
+  margin: 0 auto;
+  font-family: $primary-font;
+  font-size: 12px;
+  color: $primary-color;
+  background: #fff;
+  box-sizing: border-box;
+  position: relative;
+
+  .header-space,
+  .footer-space {
+    height: 20mm;
+  }
+
+  .main-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+    @include avoid-page-break;
+
+    .header-left {
+      width: 30%;
+      text-align: left;
+
+      p {
+        margin: 3px 0;
+        font-size: 11px;
+      }
+    }
+
+    .header-middle {
+      width: 40%;
+      text-align: center;
+
+      h2 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+      }
+    }
+
+    .header-right {
+      width: 30%;
+      text-align: right;
+
+      .header-info {
+        border-collapse: collapse;
+        width: 100%;
+        margin-left: auto;
+
+        td {
+          padding: 3px 5px;
+          text-align: left;
+          white-space: nowrap;
+          font-size: 11px;
+
+          &:first-child {
+            font-weight: bold;
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .party-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 4%;
+    @include avoid-page-break;
+
+    .party-card {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 11px; // Reduced font size by 1px
+
+      h3 {
+        margin: 0 0 8px 0;
+        font-size: 13px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 4px;
+      }
+
+      p {
+        margin: 4px 0;
+        word-break: break-word;
+      }
+    }
+  }
+
+  .po-info {
+    margin-bottom: 15px;
+    @include avoid-page-break;
+
+    p {
+      margin: 5px 0;
+      font-size: 11px;
+    }
+  }
+
+
+  .items-container {
+    margin-bottom: 20px;
+    page-break-inside: auto; // Allow breaking across pages
+  }
+
+
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed;
+    page-break-inside: auto;
+
+    thead {
+      display: table-header-group;
+    }
+
+    th,
+    td {
+      border: 1px solid $border-color;
+      padding: 5px;
+      text-align: left;
+      word-break: break-word;
+      font-size: 10px;
+    }
+
+    th {
+      background-color: $table-header-bg;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    // Column widths
+    th:first-child,
+    td:first-child {
+      width: 5%;
+      text-align: center;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 20%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 25%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 10%;
+    }
+
+    th:nth-child(5),
+    td:nth-child(5),
+    th:nth-child(6),
+    td:nth-child(6),
+    th:nth-child(7),
+    td:nth-child(7) {
+      width: 10%;
+      text-align: left;
+    }
+  }
+
+  .summary-section {
+    display: flex;
+    justify-content: flex-end; // Align to right side
+    margin-bottom: 20px;
+    @include avoid-page-break;
+
+    .amount-details {
+      width: 48%;
+      box-sizing: border-box;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td {
+          padding: 5px;
+          text-align: right;
+          font-size: 11px;
+
+          &:first-child {
+            text-align: left;
+            font-weight: bold;
+          }
+        }
+
+        .total-row {
+          border-top: 1px solid #000;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .terms-section {
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    @include avoid-page-break;
+
+    h4 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 11px;
+    }
+  }
+
+  .signature-section {
+    text-align: right;
+    margin-top: 50px;
+    box-sizing: border-box;
+    @include avoid-page-break;
+
+    .signature-box {
+      display: inline-block;
+      text-align: center;
+
+      p {
+        margin: 5px 0;
+        font-size: 11px;
+      }
+
+      .signature-line {
+        width: 200px;
+        height: 1px;
+        background: #000;
+        margin: 15px auto;
+      }
+    }
+  }
+
+
+  .items-container {
+  margin-bottom: 20px;
+  page-break-inside: auto; // Allow breaking across pages
+}
+
+.items-table {
+  // Keep your existing table styles but ADD:
+  page-break-inside: auto; // Allow table to break across pages
+  
+  // Ensure table header repeats on each page
+  thead {
+    display: table-header-group;
+  }
+  
+  // Prevent individual rows from breaking
+  tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  // Add responsive column widths
+  colgroup {
+    col:nth-child(1) { width: 5%; }
+    col:nth-child(2) { width: 20%; }
+    col:nth-child(3) { width: 25%; }
+    col:nth-child(4) { width: 10%; }
+    col:nth-child(5) { width: 10%; }
+    col:nth-child(6) { width: 10%; }
+    col:nth-child(7) { width: 10%; }
+  }
+}
+
+
+}
+
+/* ----------------- PRINT RULES ----------------- */
+@media print {
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    size: A4 portrait;
+  }
+
+  @page {
+    margin: 0 10mm;
+  }
+
+  #workorder-pdf {
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+
+    display: table;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  #workorder-pdf .main-content {
+    display: table-row-group;
+    margin: 0;
+  }
+
+  // Ensure proper page breaks for all critical elements
+  .header,
+  .party-section,
+  .summary-section,
+  .terms-section,
+  .signature-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  // Allow items table to break across pages
+  .items-table {
+    page-break-inside: auto;
+
+    tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  .items-table thead {
+    display: table-header-group;
+  }
+
+  .items-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  // Allow the items container to break
+  .items-container {
+    page-break-inside: auto;
+  }
+}

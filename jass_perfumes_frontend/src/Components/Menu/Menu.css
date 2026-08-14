@@ -1,0 +1,17 @@
+/* keep Menu.css clean, no sidebar shapes */
+
+.text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  background: red;
+  color: white;
+  font-size: 11px;
+  border-radius: 8px;
+  padding: 2px 6px;
+  margin-left: auto;
+}

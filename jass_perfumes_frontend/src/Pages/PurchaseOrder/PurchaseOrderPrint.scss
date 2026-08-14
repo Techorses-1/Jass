@@ -1,0 +1,302 @@
+#print-container,
+.print-container,
+#po-pdf {
+  width: 100%;
+  max-width: 210mm;
+  padding: 10mm;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+  background: #fff;
+  box-sizing: border-box;
+  position: relative;
+
+  /* Company GST and LUT details - fixed alignment */
+  .company-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; // Added for vertical alignment
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    page-break-inside: avoid;
+
+    .left-details,
+    .right-details {
+      width: 35%; // Added fixed width for alignment
+      p {
+        margin: 3px 0;
+        text-align: left; // Changed to left alignment
+        font-size: 11px;
+      }
+    }
+
+    .middle-details {
+      width: 30%; // Added fixed width for alignment
+      text-align: center;
+      h3 {
+        margin: 0;
+        font-size: 16px;
+        white-space: nowrap;
+      }
+    }
+
+    .right-details {
+      p {
+        text-align: right; // Right alignment for right details
+      }
+    }
+  }
+
+  .invoice-po-section {
+    display: flex;
+    justify-content: space-between; // Space between for left and right alignment
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #000;
+    page-break-inside: avoid;
+
+    .po-details, .po-date {
+      p {
+        margin: 3px 0;
+        font-weight: bold;
+      }
+    }
+
+    .po-details {
+      text-align: left;
+    }
+
+    .po-date {
+      text-align: right;
+    }
+  }
+
+  .party-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 4%;
+    page-break-inside: avoid;
+
+    .party-card {
+      width: 48%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 11px;
+
+      h3 {
+        margin: 0 0 10px 0;
+        font-size: 12px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+      }
+
+      p {
+        margin: 5px 0;
+        word-break: break-word;
+      }
+    }
+  }
+
+  .items-container {
+    margin-bottom: 20px;
+    page-break-inside: auto;
+  }
+
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    page-break-inside: auto;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 5px;
+      text-align: left;
+      word-break: break-word;
+      font-size: 10px !important;
+      line-height: 1.25;
+    }
+
+    th {
+      background: #f5f5f5;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    th.sr-no,
+    td.sr-no {
+      width: 5% !important;
+      text-align: center;
+    }
+
+    td.description-cell {
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-break: break-word !important;
+    }
+  }
+
+  .notes-summary-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 4%;
+    page-break-inside: avoid;
+
+    .notes-column {
+      width: 48%;
+      box-sizing: border-box;
+
+      .notes-section,
+      .terms-section {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 11px;
+
+        h4 {
+          margin: 0 0 5px 0;
+          font-size: 12px;
+        }
+
+        p,
+        pre {
+          margin: 4px 0;
+          white-space: pre-wrap;
+          font-family: inherit;
+          font-size: 11px;
+        }
+      }
+    }
+
+    .summary-column {
+      width: 48%;
+      box-sizing: border-box;
+
+      .amount-details {
+        table {
+          width: 100%;
+          border-collapse: collapse;
+
+          td {
+            padding: 5px;
+            text-align: right;
+            font-size: 11px;
+
+            &:first-child {
+              text-align: left;
+              font-weight: bold;
+            }
+          }
+
+          .total-row {
+            border-top: 1px solid #000;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .certification-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    align-items: flex-start;
+    page-break-inside: avoid;
+    flex-direction: row;
+
+    .contact-note {
+      width: 60%;
+      font-style: italic;
+      font-size: 11px;
+      text-align: left;
+      margin-top: 0;
+    }
+
+    .signature-box {
+      width: 35%;
+      text-align: center;
+
+      p {
+        margin: 5px 0;
+        font-size: 11px;
+      }
+
+      .signature-line {
+        width: 200px;
+        height: 1px;
+        background: #000;
+        margin: 15px auto;
+      }
+    }
+  }
+
+  .jurisdiction-note {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    page-break-before: avoid;
+    font-size: 11px;
+  }
+}
+
+/* ----------------- PRINT RULES ----------------- */
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+    background: #fff;
+  }
+
+  #po-pdf {
+    width: 210mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  #po-pdf .main-content {
+    display: block;
+    margin: 0;
+    background: #fff;
+  }
+
+  .items-table thead {
+    display: table-header-group;
+  }
+
+  .items-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .items-table {
+    page-break-inside: auto;
+  }
+}
