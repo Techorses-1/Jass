@@ -60,7 +60,7 @@ cron.schedule("0 0 1 1 *", async () => {
 
 // Basic Route
 app.get('/', (req, res) => {
-  res.send('Hello World from updayed Jass Inventory Backend new LIVE whatsapp Image UPDATED!');
+  res.send('New Hello World from updayed Jass Inventory Backend new LIVE whatsapp Image UPDATED!');
 });
 
 // ✅ CREATE HTTP SERVER WITH SOCKET.IO
